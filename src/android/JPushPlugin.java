@@ -89,17 +89,7 @@ public class JPushPlugin extends CordovaPlugin {
 
         cordovaActivity = this.cordova.getActivity();
 
-        //如果同时缓存了打开事件openNotificationAlert 和 消息事件notificationAlert，只向UI 发 打开事件。
-        //这样做是为了和iOS 统一
-        if (JPushPlugin.openNotificationAlert != null) {
-            JPushPlugin.notificationAlert = null;
-            JPushPlugin.transmitOpen(JPushPlugin.openNotificationAlert,
-                    JPushPlugin.openNotificationExtras);
-        }
-        if (JPushPlugin.notificationAlert != null) {
-            JPushPlugin.transmitReceive(JPushPlugin.notificationAlert,
-                    JPushPlugin.notificationExtras);
-        }
+       
         //JPushInterface.init(cordova.getActivity().getApplicationContext());
     }
 
@@ -250,6 +240,17 @@ public class JPushPlugin extends CordovaPlugin {
     void init(JSONArray data, CallbackContext callbackContext) {
         JPushInterface.init(cordovaActivity.getApplicationContext());
         //callbackContext.success();
+         //如果同时缓存了打开事件openNotificationAlert 和 消息事件notificationAlert，只向UI 发 打开事件。
+        //这样做是为了和iOS 统一
+        if (JPushPlugin.openNotificationAlert != null) {
+            JPushPlugin.notificationAlert = null;
+            JPushPlugin.transmitOpen(JPushPlugin.openNotificationAlert,
+                    JPushPlugin.openNotificationExtras);
+        }
+        if (JPushPlugin.notificationAlert != null) {
+            JPushPlugin.transmitReceive(JPushPlugin.notificationAlert,
+                    JPushPlugin.notificationExtras);
+        }
     }
 
     void setDebugMode(JSONArray data, CallbackContext callbackContext) {
