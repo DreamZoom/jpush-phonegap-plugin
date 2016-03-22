@@ -186,7 +186,7 @@ public class JPushPlugin extends CordovaPlugin {
             return;
         }
         if (JPushPlugin.shouldCacheMsg) {
-            return;
+           // return;
         }
         JSONObject data = openNotificationObject(alert, extras);
         String format = "window.plugins.jPushPlugin.openNotificationInAndroidCallback(%s);";
