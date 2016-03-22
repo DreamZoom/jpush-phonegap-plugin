@@ -50,7 +50,7 @@ public class MyReceiver extends BroadcastReceiver {
         Map<String, Object> extras = getNotificationExtras(intent);
         JPushPlugin.openNotificationExtras = extras;
 
-        JPushPlugin.transmitOpen(alert, extras);
+       // JPushPlugin.transmitOpen(alert, extras);
 
         Intent launch = context.getPackageManager().getLaunchIntentForPackage(
             context.getPackageName());
